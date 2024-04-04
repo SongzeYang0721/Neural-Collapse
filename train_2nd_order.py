@@ -62,9 +62,9 @@ def trainer(args, model, trainloader, epoch_id, criterion, optimizer, logfile):
         top1.update(prec1.item(), inputs.size(0))
         top5.update(prec5.item(), inputs.size(0))
 
-        if batch_idx % 10 == 0:
-            print_and_save('[epoch: %d] (%d/%d) | Loss: %.4f | top1: %.4f | top5: %.4f ' %
-                           (epoch_id + 1, batch_idx + 1, len(trainloader), losses.avg, top1.avg, top5.avg), logfile)
+        # if batch_idx % 10 == 0:
+    print_and_save('[epoch: %d] (%d/%d) | Loss: %.4f | top1: %.4f | top5: %.4f ' %
+                    (epoch_id + 1, batch_idx + 1, len(trainloader), losses.avg, top1.avg, top5.avg), logfile)
 
 
 def train(args, model, trainloader):
