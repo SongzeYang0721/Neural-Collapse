@@ -37,7 +37,7 @@ def trainer(args, model, trainloader, epoch_id, criterion, optimizer, logfile):
             if args.loss == 'CrossEntropy':
                 loss = criterion(outputs[0], targets) + weight_decay(args, model)
             elif args.loss == 'MSE':
-                loss = criterion(outputs[0], nn.functional.one_hot(targets, num_classes=outputs[0].shape[1]).type(torch.FloatTensor).to(args.device)) \
+                loss = criterion(outputs[0], nn.functional.one_hot(targets,num_classes=outputs[0].shape[1]).type(torch.FloatTensor).to(args.device)) \
                        + weight_decay(args, model)
 
             optimizer.zero_grad()
@@ -56,8 +56,8 @@ def trainer(args, model, trainloader, epoch_id, criterion, optimizer, logfile):
             loss = criterion(outputs[0], targets) + weight_decay(args, model)
         elif args.loss == 'MSE':
             print("outputs[0]", outputs[0].shape)
-            print("nn.functional.one_hot(targets).type(torch.FloatTensor)", nn.functional.one_hot(targets, num_classes=outputs[0].shape[1]).type(torch.FloatTensor).shape)
-            loss = criterion(outputs[0], nn.functional.one_hot(targets, num_classes=outputs[0].shape[1]).type(torch.FloatTensor).to(args.device)) \
+            print("nn.functional.one_hot(targets).type(torch.FloatTensor)", nn.functional.one_hot(targets,num_classes=outputs[0].shape[1]).type(torch.FloatTensor).shape)
+            loss = criterion(outputs[0], nn.functional.one_hot(targets,num_classes=outputs[0].shape[1]).type(torch.FloatTensor).to(args.device)) \
                    + weight_decay(args, model)
 
         losses.update(loss.item(), inputs.size(0))
